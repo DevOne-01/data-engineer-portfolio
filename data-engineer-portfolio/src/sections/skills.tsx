@@ -1,7 +1,10 @@
 'use client'
 import { motion } from 'framer-motion'
 import { FaPython, FaAws, FaGitAlt, FaNodeJs } from 'react-icons/fa'
-import { /*SiMicrosoftazure,*/ SiSnowflake, SiApacheairflow, SiApachehadoop, /*SiPowerbi,*/ SiTypescript, SiDocker, SiKubernetes, SiReact, SiNextdotjs } from 'react-icons/si'
+import {
+  SiSnowflake, SiApacheairflow, SiApachehadoop, /*SiAzuredevops,*/
+  SiDocker, SiKubernetes
+} from 'react-icons/si'
 
 const skills = [
   {
@@ -17,7 +20,7 @@ const skills = [
   {
     category: 'Cloud & Big Data',
     items: [
-      //{ name: 'Azure', icon: <SiMicrosoftazure /> },
+      //{ name: 'Azure', icon: <SiAzuredevops /> },
       { name: 'AWS', icon: <FaAws /> },
       { name: 'Snowflake', icon: <SiSnowflake /> },
       { name: 'Hadoop', icon: <SiApachehadoop /> },
@@ -27,9 +30,9 @@ const skills = [
   {
     category: 'Data & BI',
     items: [
-      //{ name: 'Power BI', icon: <SiPowerbi /> },
+      { name: 'Power BI' },
       { name: 'Azure Synapse' },
-      { name: 'Azure Data Factory' },
+      { name: 'Data Factory' },
       { name: 'SSIS / SSAS' },
       { name: 'Databricks' },
     ],
@@ -67,19 +70,21 @@ export default function Skills() {
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: idx * 0.2, duration: 0.6 }}
-              className="bg-gray-100 rounded-2xl shadow p-6"
+              transition={{ delay: idx * 0.2, duration: 0.6, type: 'spring' }}
+              className="bg-gray-50 rounded-2xl shadow p-6 hover:shadow-xl transition"
             >
               <h3 className="text-xl font-semibold mb-4">{group.category}</h3>
               <div className="flex flex-wrap gap-4">
                 {group.items.map((item, i) => (
-                  <div
+                  <motion.div
                     key={i}
-                    className="flex items-center gap-2 bg-white px-4 py-2 rounded-xl shadow-sm hover:shadow-md transition"
+                    whileHover={{ scale: 1.08 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 bg-white rounded-xl shadow-sm hover:shadow-md hover:ring-2 ring-indigo-300 transition-all"
                   >
                     {item.icon && <span className="text-indigo-500 text-lg">{item.icon}</span>}
                     <span className="text-sm font-medium">{item.name}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
